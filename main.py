@@ -13,6 +13,9 @@ add_parser.add_argument("--amount", type = float, required = True,  help = "amou
 add_parser.add_argument("--category", type = str, required = True, help = "category of the expense")
 add_parser.add_argument("--description", type = str, default = "", help = "description of the expense")
 
+list_parser = subparsers.add_parser("list", help = "list all expenses")
+list_parser.add_argument("--category", type = str, default = None, help = "category of the expense")
+
 args = parser.parse_args()
 
 if args.command == "add":
@@ -23,3 +26,7 @@ if args.command == "add":
     expenses.append(new_expense)
     save(expenses)
     print(f"expense added (id={id})")
+elif args.command == "list":
+    expenses = load()
+    for expense in expenses:
+        print(expense)
