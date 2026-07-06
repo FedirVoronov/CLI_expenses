@@ -1,5 +1,5 @@
 import csv
-
+import os
 from models import Expense
 
 
@@ -12,6 +12,8 @@ def save(expenses, filename="expenses.csv"):
 
 def load(filename="expenses.csv"):
     expenses = []
+    if not os.path.exists(filename):
+        return expenses
     with open(filename, "r", newline="") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
