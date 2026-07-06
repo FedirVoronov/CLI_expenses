@@ -28,5 +28,11 @@ if args.command == "add":
     print(f"expense added (id={id})")
 elif args.command == "list":
     expenses = load()
-    for expense in expenses:
-        print(expense)
+    if args.category is not None:
+        filtered = []
+        for expense in expenses:
+            if expense.category == args.category:
+                filtered.append(expense)
+        expenses = filtered
+        for expense in expenses:
+            print(expense)
