@@ -41,8 +41,15 @@ elif args.command == "list":
 elif args.command == "stats":
     expenses = load()
     Sum = 0
+    sort_category = {}
     for expense in expenses:
+        if expense.category in sort_category:
+            sort_category[expense.category] += expense.amount
+        else:
+            sort_category[expense.category] = expense.amount
         Sum += expense.amount
     print(f"Expenses total: {Sum}")
+    for category, amount in sort_category.items():
+        print(f"{category}: {amount}")
 
 
