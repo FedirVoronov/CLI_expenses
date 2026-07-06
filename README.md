@@ -15,7 +15,7 @@ this short python project allows the user to manage expenses through terminal;
 
 **how to install**:
 - clone repository
-- navigate to the project folder
+- navigate to the project folder(cd CLI_expenses)
 - run it(python main.py --help)
 
 **how to use**:
