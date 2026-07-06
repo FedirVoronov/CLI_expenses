@@ -16,6 +16,8 @@ add_parser.add_argument("--description", type = str, default = "", help = "descr
 list_parser = subparsers.add_parser("list", help = "list all expenses")
 list_parser.add_argument("--category", type = str, default = None, help = "category of the expense")
 
+stats_parser = subparsers.add_parser("stats", help = "show expenses stats")
+
 args = parser.parse_args()
 
 if args.command == "add":
@@ -36,3 +38,11 @@ elif args.command == "list":
         expenses = filtered
         for expense in expenses:
             print(expense)
+elif args.command == "stats":
+    expenses = load()
+    Sum = 0
+    for expense in expenses:
+        Sum += expense.amount
+    print(f"Expenses total: {Sum}")
+
+
