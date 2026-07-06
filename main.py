@@ -16,6 +16,9 @@ add_parser.add_argument("--description", type = str, default = "", help = "descr
 list_parser = subparsers.add_parser("list", help = "list all expenses")
 list_parser.add_argument("--category", type = str, default = None, help = "category of the expense")
 
+delete_parser = subparsers.add_parser("delete", help="delete item by id")
+delete_parser.add_argument("--id", type=int, required=True, help="id of item to delete")
+
 stats_parser = subparsers.add_parser("stats", help = "show expenses stats")
 
 args = parser.parse_args()
@@ -51,5 +54,12 @@ elif args.command == "stats":
     print(f"Expenses total: {Sum}")
     for category, amount in sort_category.items():
         print(f"{category}: {amount}")
-
+elif args.command == "delete":
+    expenses = load()
+    new_expense = []
+    for expense in expenses:
+        if expense.id != args.id:
+            new_expense.append(expense)
+    save(new_expense)
+    print(f"expense deleted (id={args.id})")
 
