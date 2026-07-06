@@ -39,8 +39,8 @@ elif args.command == "list":
             if expense.category == args.category:
                 filtered.append(expense)
         expenses = filtered
-        for expense in expenses:
-            print(expense)
+    for expense in expenses:
+        print(expense)
 elif args.command == "stats":
     expenses = load()
     Sum = 0
