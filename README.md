@@ -24,7 +24,7 @@ this short python project allows the user to manage expenses through terminal;
 - add an expense:
 python main.py add --amount [your amount] --category [your category] --description "[your description]"
 - list expenses:
-python main.py list (optionally you might filter it displaying data by each category, delete all brackets(--category [your category])
+python main.py list --category [your category] // everything after list is optional, you might use filter to display data by each category
 - view stats:
 python main.py stats
 - delete an expense by id:
